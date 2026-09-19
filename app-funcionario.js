@@ -80,9 +80,13 @@ const bdFuncionarios = [
   { "id": 77, "nome": "Wesley Caldas", "cargo": "Analista Financeiro", "imagem": "https://i.pravatar.cc/150?img=7" }
 ]
 
+const botaoFrontend = document.getElementById('btn-frontend')
+
 function criarCardFuncionario(funcionario) {
     const card = document.createElement('div')
     card.className = 'card'
+
+    card.onclick = () => alert (`Nome: ${funcionario.nome}\nCargo: ${funcionario.cargo}`)
 
     const nome = document.createElement('h3')
     nome.textContent = funcionario.nome
@@ -97,15 +101,22 @@ function criarCardFuncionario(funcionario) {
     // card.appendChild(cargo)
     // card.appendChild(imagem)
 
-    card.append(nome, cargo, imagem)
+    card.append(nome, imagem, cargo)
 
     return card
 }
 
-function carregarFuncionarios() {
-    const cards = bdFuncionarios.map(criarCardFuncionario)
+function carregarFuncionarios(funcionarios) {
+    const cards = funcionarios.map(criarCardFuncionario)
     const container = document.getElementById('funcionarios-container')
-    container.append(...cards)
+    container.replaceChildren(...cards)
 }
 
-carregarFuncionarios()
+function carregarFuncionariosFiltrado(cargo) {
+    const funcionariosFiltrados = bdFuncionarios.filter(funcionario => funcionario.cargo === cargo)
+    carregarFuncionarios(funcionariosFiltrados)
+}
+
+botaoFrontend.onclick = () => carregarFuncionariosFiltrado('Desenvolvedor Frontend')
+
+carregarFuncionarios(bdFuncionarios)
