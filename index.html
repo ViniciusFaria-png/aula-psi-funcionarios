@@ -8,10 +8,31 @@
     <script src="app-funcionario.js" defer></script>
 </head>
 <body>
-    <form>
-        <button id="btn-frontend" type="button">
+    <form id="filtro" class="filtro">
+        <div id="botoes-filtro" class="botoes-filtro">
+            <button id="btn-frontend" type="button">
             Frontend
-        </button>
+            </button>
+            <button id="btn-backend" type="button">
+                Backend
+            </button>
+            <button id="btn-uxui" type="button">
+                UX/UI
+            </button>
+        </div>
+        <div id="inputs-filtro" class="inputs-filtro">
+            <input type="text" id="input-nome" placeholder="Digite o nome do funcionário">
+            <input type="text" id="input-cargo" placeholder="Digite o cargo do funcionário">
+        </div>
+        <div id="botoes-filtrar" class="botoes-filtrar">
+            <button id="btn-filtrar" type="button">
+                Filtrar
+            </button>
+            <button id="btn-limpar" type="button">
+                Limpar Filtros
+            </button>
+        </div>
+
     </form>
     <div class="funcionarios-container"id="funcionarios-container"></div>
 
